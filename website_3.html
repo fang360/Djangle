@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% load staticfiles %}
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="{%static 'blog/home_menu.css'%}">
+    <title>日本美食 | Django</title>
+	<style type="text/css">
+	body, html{
+		height: 100%;
+		margin: 0;
+	}
+
+	.banner{
+		/* The image used */
+		background-image: url("{%static 'blog/images/banner.jpg'%}");
+		/*<img src="{%static 'blog/images/3.png'%}" alt="" width="924" heigh="425">*/
+		/* Center and scale the image nicely */
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		/* Full height */
+		height: 80%;
+	}
+
+	h1{
+		position: relative;
+		left: 0px;
+		top: 0px;
+	}
+	h3{
+		position: relative;
+		left: 0px;
+		top: 0px;
+	}
+	h2{
+		font-size: 30px;
+	}
+	p{
+		font-size: 20px;
+	}
+	
+	#DIV1{
+	text-align: center;
+	margin-left: 100px;
+	width:540px;
+	height:304px;
+	padding:0px;
+	border:2px white;
+	float:left;
+	}
+	#DIV2{
+	text-align: center;
+	width:540px;
+	height:304px;
+	padding:0px;
+	border:2px white;
+	float:left;
+	}
+	</style>
+
+</head>
+
+<body>
+<a href="http://127.0.0.1:8000/" class="fa fa-home" style="font-size: 50px;"></a>
+<!-- <i class="fa fa-home" style="font-size:48px;color:red;"></i> -->
+
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="http://127.0.0.1:8000/second/">美食</a>
+  <a href="http://127.0.0.1:8000/templates/">節慶</a>
+  <a href="http://127.0.0.1:8000/attractions/">景點</a>
+</div>
+
+<div id="main">
+  <div id="DIV_menu">
+    <span style="font-size:40px; cursor:pointer" onclick="openNav()">&#9776;</span>
+  </div>
+</div>
+
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "500px";
+    // document.getElementById("main").style.marginRight = "250px";
+    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    // document.getElementById("main").style.marginRight= "0";
+    document.body.style.backgroundColor = "white";
+}
+</script>
+
+<div class="banner"></div>
+
+<br><br>
+
+<div id="DIV1">
+<img src="{%static 'blog/images/1.png'%}" alt="" width="540" height="304">
+</div>
+<div id="DIV2">
+{% for post in post_list_1 %}
+	<h1>{{ post.title }}</h1>
+	<h3>{{ post.content }}</h3>
+{% endfor %}
+</div>
+<div style="clear:both;"></div><!-- 這是用來清除上方的浮動效果 -->
+
+<div id="DIV1">
+{% for post in post_list_2 %}
+	<h1>{{ post.title }}</h1>
+	<h3>{{ post.content }}</h3>
+{% endfor %}
+</div>
+<div id="DIV2">
+<img src="{%static 'blog/images/2.png'%}" alt="" width="540" height="304">
+</div>
+<div style="clear:both;"></div><!-- 這是用來清除上方的浮動效果 -->
+
+<div id="DIV1">
+<img src="{%static 'blog/images/3.png'%}" alt="" width="540" height="304">
+</div>
+<div id="DIV2">
+{% for post in post_list_3 %}
+	<h1>{{ post.title }}</h1>
+	<h3>{{ post.content }}</h3>
+{% endfor %}
+</div>
+<div style="clear:both;"></div><!--這是用來清除上方的浮動效果-->
+
+<div id="DIV1">
+{% for post in post_list_4 %}
+	<h1>{{ post.title }}</h1>
+	<h3>{{ post.content }}</h3>
+{% endfor %}
+</div>
+<div id="DIV2">
+<img src="{%static 'blog/images/4.png'%}" alt="" width="540" height="304">
+</div>
+<div style="clear:both;"></div><!--這是用來清除上方的浮動效果-->
+
+</body>
+</html>
+
+<!-- {% for post in post_list %}
+    <div>
+    {{ post.title }}
+    {{ post.created_at }}
+    
+    {% if post.photo %}
+    	<div class="thumbnail">
+    	<img src="{{ post.photo }}" alt="">
+		</div>
+	{% else %}
+		<div class="thumbnail thumbnail-default"></div>
+	{% endif %}
+
+    {{ post.content }}
+    </div>
+{% endfor %} -->
